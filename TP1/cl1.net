@@ -18,11 +18,9 @@ pl Cl1_idle (1)
 
 # Passage en attente de la ressource R_1 et demande d'accès à G_1
 tr Cl1_req1 Cl1_idle -> Cl1_wait1 Cl1_G1_req
-tr G1_Cl1_req Cl1_G1_req -> G1_Cl1_ack
 # Passage en attente de la ressource R_2 et demande d'accès à G_2 après l'aquitement de G_1
 tr Cl1_req2 Cl1_wait1 G1_Cl1_ack -> Cl1_wait2 Cl1_G2_req
-tr G2_Cl1_req Cl1_G2_req -> G2_Cl1_ack
 # Travail sur les deux ressources après l'aquitement de G_2
 tr Cl1_enter Cl1_wait2 G2_Cl1_ack -> Cl1_work
 # Fin du travail, libération des deux ressources et passage en mode repos
-tr Cl1_exit Cl1_work -> Cl1_idle 
+tr Cl1_exit Cl1_work -> Cl1_G1_release Cl1_G2_release Cl1_idle 

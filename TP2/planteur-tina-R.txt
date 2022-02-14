@@ -1,0 +1,183 @@
+Tina version 3.7.0 -- 01/11/22 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net planteur
+
+5 places, 5 transitions, 14 arcs
+
+net planteur
+tr cueille bananier champ  -> banane champ 
+tr dort jardin  -> champ 
+tr leve table  -> jardin 
+tr mange banane table  -> bananier table 
+tr rentre champ  -> table 
+pl bananier (20)
+pl champ (1)
+
+0.000s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+63 marking(s), 103 transition(s)
+
+MARKINGS:
+
+0 : bananier*20 champ
+1 : banane bananier*19 champ
+2 : bananier*20 table
+3 : banane*2 bananier*18 champ
+4 : banane bananier*19 table
+5 : bananier*20 jardin
+6 : banane*3 bananier*17 champ
+7 : banane*2 bananier*18 table
+8 : banane bananier*19 jardin
+9 : banane*4 bananier*16 champ
+10 : banane*3 bananier*17 table
+11 : banane*2 bananier*18 jardin
+12 : banane*5 bananier*15 champ
+13 : banane*4 bananier*16 table
+14 : banane*3 bananier*17 jardin
+15 : banane*6 bananier*14 champ
+16 : banane*5 bananier*15 table
+17 : banane*4 bananier*16 jardin
+18 : banane*7 bananier*13 champ
+19 : banane*6 bananier*14 table
+20 : banane*5 bananier*15 jardin
+21 : banane*8 bananier*12 champ
+22 : banane*7 bananier*13 table
+23 : banane*6 bananier*14 jardin
+24 : banane*9 bananier*11 champ
+25 : banane*8 bananier*12 table
+26 : banane*7 bananier*13 jardin
+27 : banane*10 bananier*10 champ
+28 : banane*9 bananier*11 table
+29 : banane*8 bananier*12 jardin
+30 : banane*11 bananier*9 champ
+31 : banane*10 bananier*10 table
+32 : banane*9 bananier*11 jardin
+33 : banane*12 bananier*8 champ
+34 : banane*11 bananier*9 table
+35 : banane*10 bananier*10 jardin
+36 : banane*13 bananier*7 champ
+37 : banane*12 bananier*8 table
+38 : banane*11 bananier*9 jardin
+39 : banane*14 bananier*6 champ
+40 : banane*13 bananier*7 table
+41 : banane*12 bananier*8 jardin
+42 : banane*15 bananier*5 champ
+43 : banane*14 bananier*6 table
+44 : banane*13 bananier*7 jardin
+45 : banane*16 bananier*4 champ
+46 : banane*15 bananier*5 table
+47 : banane*14 bananier*6 jardin
+48 : banane*17 bananier*3 champ
+49 : banane*16 bananier*4 table
+50 : banane*15 bananier*5 jardin
+51 : banane*18 bananier*2 champ
+52 : banane*17 bananier*3 table
+53 : banane*16 bananier*4 jardin
+54 : banane*19 bananier champ
+55 : banane*18 bananier*2 table
+56 : banane*17 bananier*3 jardin
+57 : banane*20 champ
+58 : banane*19 bananier table
+59 : banane*18 bananier*2 jardin
+60 : banane*20 table
+61 : banane*19 bananier jardin
+62 : banane*20 jardin
+
+REACHABILITY GRAPH:
+
+0 -> cueille/1, rentre/2
+1 -> cueille/3, rentre/4
+2 -> leve/5
+3 -> cueille/6, rentre/7
+4 -> leve/8, mange/2
+5 -> dort/0
+6 -> cueille/9, rentre/10
+7 -> leve/11, mange/4
+8 -> dort/1
+9 -> cueille/12, rentre/13
+10 -> leve/14, mange/7
+11 -> dort/3
+12 -> cueille/15, rentre/16
+13 -> leve/17, mange/10
+14 -> dort/6
+15 -> cueille/18, rentre/19
+16 -> leve/20, mange/13
+17 -> dort/9
+18 -> cueille/21, rentre/22
+19 -> leve/23, mange/16
+20 -> dort/12
+21 -> cueille/24, rentre/25
+22 -> leve/26, mange/19
+23 -> dort/15
+24 -> cueille/27, rentre/28
+25 -> leve/29, mange/22
+26 -> dort/18
+27 -> cueille/30, rentre/31
+28 -> leve/32, mange/25
+29 -> dort/21
+30 -> cueille/33, rentre/34
+31 -> leve/35, mange/28
+32 -> dort/24
+33 -> cueille/36, rentre/37
+34 -> leve/38, mange/31
+35 -> dort/27
+36 -> cueille/39, rentre/40
+37 -> leve/41, mange/34
+38 -> dort/30
+39 -> cueille/42, rentre/43
+40 -> leve/44, mange/37
+41 -> dort/33
+42 -> cueille/45, rentre/46
+43 -> leve/47, mange/40
+44 -> dort/36
+45 -> cueille/48, rentre/49
+46 -> leve/50, mange/43
+47 -> dort/39
+48 -> cueille/51, rentre/52
+49 -> leve/53, mange/46
+50 -> dort/42
+51 -> cueille/54, rentre/55
+52 -> leve/56, mange/49
+53 -> dort/45
+54 -> cueille/57, rentre/58
+55 -> leve/59, mange/52
+56 -> dort/48
+57 -> rentre/60
+58 -> leve/61, mange/55
+59 -> dort/51
+60 -> leve/62, mange/58
+61 -> dort/54
+62 -> dort/57
+
+0.000s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 63 live marking(s)
+0 dead transition(s), 5 live transition(s)
+
+STRONG CONNECTED COMPONENTS:
+
+0 : 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+
+SCC GRAPH:
+
+0 -> dort/0, leve/0, mange/0, rentre/0, cueille/0
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+
+

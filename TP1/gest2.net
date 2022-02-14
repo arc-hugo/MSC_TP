@@ -1,4 +1,4 @@
 pl R2 (1)
 
-tr G2_Cl1_req R2 Cl1_req2 -> G2_Cl1_ack
+tr G2_Cl1_req R2 Cl1_G2_req -> G2_Cl1_ack
 tr G2_Cl1_release Cl1_G2_release -> R2

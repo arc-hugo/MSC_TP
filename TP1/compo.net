@@ -1,12 +1,12 @@
 net {}
-tr Cl1_enter Cl1_wait2 G2_Cl1_ack  -> Cl1_work 
-tr Cl1_exit Cl1_work  -> Cl1_G1_release Cl1_G2_release Cl1_idle 
-tr Cl1_req1 Cl1_idle  -> Cl1_G1_req Cl1_wait1 
-tr Cl1_req2 Cl1_wait1 G1_Cl1_ack  -> Cl1_G2_req Cl1_wait2 
-tr G1_Cl1_release Cl1_G1_release  -> R1 
-tr G1_Cl1_req Cl1_G1_req R1  -> G1_Cl1_ack 
-tr G2_Cl1_release Cl1_G2_release  -> R2 
-tr G2_Cl1_req Cl1_G2_req R2  -> G2_Cl1_ack 
+tr Cl1_enter Cl1_wait2 G2_Cl1_ack  -> Cl1_work
+tr Cl1_exit Cl1_work G1_Busy G2_Busy  -> Cl1_G1_release Cl1_G2_release Cl1_idle
+tr Cl1_req1 Cl1_idle  -> Cl1_G1_req Cl1_wait1
+tr Cl1_req2 Cl1_wait1 G1_Cl1_ack  -> Cl1_G2_req Cl1_wait2
+tr G1_Cl1_release Cl1_G1_release  -> R_1
+tr G1_Cl1_req Cl1_G1_req R_1  -> G1_Busy G1_Cl1_ack
+tr G2_Cl1_release Cl1_G2_release  -> R_2
+tr G2_Cl1_req Cl1_G2_req R_2  -> G2_Busy G2_Cl1_ack
 pl Cl1_idle (1)
-pl R1 (1)
-pl R2 (1)
+pl R_1 (1)
+pl R_2 (1)

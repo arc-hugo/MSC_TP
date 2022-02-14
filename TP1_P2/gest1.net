@@ -1,0 +1,5 @@
+pl R_1 (1)
+
+tr G1_Cl1_req R_1 -> G1_Busy
+tr Cl1_exit G1_Busy -> Cl1_G1_release
+tr G1_Cl1_release Cl1_G1_release -> R_1

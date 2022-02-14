@@ -1,4 +1,6 @@
-pl R2 (1)
+pl G2_Free (1)
 
-tr G2_Cl1_req R2 Cl1_G2_req -> G2_Cl1_ack
-tr G2_Cl1_release Cl1_G2_release -> R2
+tr G2_Cl1_req G2_Free Cl1_G2_req -> G2_Cl1_ack G2_Busy
+tr G2_Cl1_release Cl1_G2_release G2_Busy -> G2_Free
+tr G2_Cl2_req G2_Free Cl2_G2_req -> G2_Cl2_ack G2_Busy
+tr G2_Cl2_release Cl2_G2_release G2_Busy -> G2_Free

@@ -14,14 +14,14 @@
 # Le comportement du client1 est fourni et ne doit pas etre modifie.
 
 # Premier jeton sur le client en repos
-pl Cl1_idle (1) 
+pl Cl2_idle (1) 
 
 # Passage en attente de la ressource R_1 et demande d'accès à G_1
-tr Cl1_req1 Cl1_idle -> Cl1_wait1 Cl1_G1_req
+tr Cl2_req2 Cl2_idle -> Cl2_wait2 Cl2_G2_req
 # Passage en attente de la ressource R_2 et demande d'accès à G_2 après l'aquitement de G_1
-tr Cl1_req2 Cl1_wait1 G1_Cl1_ack -> Cl1_wait2 Cl1_G2_req
+tr Cl2_req1 Cl2_wait2 G2_Cl2_ack -> Cl2_wait1 Cl2_G1_req
 # Travail sur les deux ressources après l'aquitement de G_2
-tr Cl1_enter Cl1_wait2 G2_Cl1_ack -> Cl1_work
-tr pb_mutex Cl1_work -> Cl1_work
+tr Cl2_enter Cl2_wait1 G1_Cl2_ack -> Cl2_work
+tr pb_mutex Cl2_work -> Cl2_work
 # Fin du travail, libération des deux ressources et passage en mode repos
-tr Cl1_exit Cl1_work -> Cl1_G1_release Cl1_G2_release Cl1_idle
+tr Cl2_exit Cl2_work -> Cl2_G1_release Cl2_G2_release Cl2_idle 

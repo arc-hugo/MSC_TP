@@ -1,0 +1,14 @@
+t 325.0 140.0 G2_Cl1_req e 0 w n {} ne
+p 350.0 55.0 G2_Cl1_ack 0 n
+p 80.0 90.0 Cl1_G2_release 0 n
+p 220.0 60.0 R2 1 n
+t 150.0 185.0 G2_Cl1_release s 0 w n {} ne
+p 330.0 225.0 Cl1_req2 0 n
+e G2_Cl1_release R2 1 n
+e Cl1_G2_release G2_Cl1_release 1 n
+e G2_Cl1_req G2_Cl1_ack 1 n
+e R2 G2_Cl1_req 1 n
+e Cl1_req2 G2_Cl1_req 1 n
+h gest2
+
+

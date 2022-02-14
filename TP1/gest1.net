@@ -1,0 +1,4 @@
+pl R1 (1)
+
+tr G1_Cl1_req R1 Cl1_req1 -> G1_Cl1_ack
+tr G1_Cl1_release Cl1_G1_release -> R1

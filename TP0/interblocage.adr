@@ -1,0 +1,13 @@
+s 345.0 125.0 2 c {A WaitA idle} ne
+s 110.0 340.0 0 c {A B idle*2} ne
+s 160.0 55.0 3 c {WaitA WaitB} ne
+s 50.0 175.0 1 c {B WaitB idle} ne
+e 2 0 OqpBA se
+e 2 3 OqpA ne
+e 1 3 OqpB nw
+e 1 0 OqpAB w
+e 0 2 OqpB e
+e 0 1 OqpA w
+h interblocage
+
+

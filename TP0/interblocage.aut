@@ -1,0 +1,13 @@
+des(0,10,4)
+(0,"S.`A` S.`B` S.`idle`*2",0)
+(0,"E.`OqpA`",1)
+(0,"E.`OqpB`",2)
+(1,"S.`B` S.`WaitB` S.`idle`",1)
+(1,"E.`OqpAB`",0)
+(1,"E.`OqpB`",3)
+(2,"S.`A` S.`WaitA` S.`idle`",2)
+(2,"E.`OqpA`",3)
+(2,"E.`OqpBA`",0)
+(3,"S.`WaitA` S.`WaitB`",3)
+
+

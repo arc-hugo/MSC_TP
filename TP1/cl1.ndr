@@ -1,0 +1,31 @@
+p 605.0 210.0 Cl1_G1_release 0 n
+t 505.0 290.0 Cl1_exit e 0 w n {} ne
+p 450.0 400.0 Cl1_idle 1 n
+p 325.0 535.0 Cl1_G1_req 0 n
+t 330.0 435.0 Cl1_req1 n 0 w n {} ne
+p 75.0 375.0 Cl1_G2_req 0 n
+p 60.0 205.0 G1_Cl1_ack 0 n
+t 170.0 285.0 Cl1_req2 w 0 w n {} ne
+p 205.0 430.0 Cl1_wait1 0 n
+p 210.0 205.0 Cl1_wait2 0 n
+p 465.0 200.0 Cl1_work 0 n
+p 345.0 55.0 G2_Cl1_ack 0 n
+t 330.0 145.0 Cl1_enter s 0 w n {} ne
+p 625.0 405.0 Cl1_G2_release 0 n
+e Cl1_exit Cl1_G1_release 1 n
+e Cl1_exit Cl1_G2_release 1 n
+e Cl1_exit Cl1_idle 1 n
+e Cl1_work Cl1_exit 1 n
+e Cl1_enter Cl1_work 1 n
+e Cl1_wait2 Cl1_enter 1 n
+e G2_Cl1_ack Cl1_enter 1 n
+e Cl1_req2 Cl1_wait2 1 n
+e Cl1_req2 Cl1_G2_req 1 n
+e Cl1_wait1 Cl1_req2 1 n
+e G1_Cl1_ack Cl1_req2 1 n
+e Cl1_req1 Cl1_wait1 1 n
+e Cl1_req1 Cl1_G1_req 1 n
+e Cl1_idle Cl1_req1 1 n
+h cl1
+
+

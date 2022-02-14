@@ -1,0 +1,211 @@
+Tina version 3.7.0 -- 01/11/22 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net compo
+
+24 places, 17 transitions, 60 arcs
+
+net compo
+tr Cl1_enter Cl1_wait2 G2_Cl1_ack  -> Cl1_work 
+tr Cl1_exit Cl1_work  -> Cl1_G1_release Cl1_G2_release Cl1_idle 
+tr Cl1_req1 Cl1_idle  -> Cl1_G1_req Cl1_wait1 
+tr Cl1_req2 Cl1_wait1 G1_Cl1_ack  -> Cl1_G2_req Cl1_wait2 
+tr Cl2_enter Cl2_wait1 G1_Cl2_ack  -> Cl2_work 
+tr Cl2_exit Cl2_work  -> Cl2_G1_release Cl2_G2_release Cl2_idle 
+tr Cl2_req1 Cl2_wait2 G2_Cl2_ack  -> Cl2_G1_req Cl2_wait1 
+tr Cl2_req2 Cl2_idle  -> Cl2_G2_req Cl2_wait2 
+tr G1_Cl1_release Cl1_G1_release G1_Busy  -> G1_Free 
+tr G1_Cl1_req Cl1_G1_req G1_Free  -> G1_Busy G1_Cl1_ack 
+tr G1_Cl2_release Cl2_G1_release G1_Busy  -> G1_Free 
+tr G1_Cl2_req Cl2_G1_req G1_Free  -> G1_Busy G1_Cl2_ack 
+tr G2_Cl1_release Cl1_G2_release G2_Busy  -> G2_Free 
+tr G2_Cl1_req Cl1_G2_req G2_Free  -> G2_Busy G2_Cl1_ack 
+tr G2_Cl2_release Cl2_G2_release G2_Busy  -> G2_Free 
+tr G2_Cl2_req Cl2_G2_req G2_Free  -> G2_Busy G2_Cl2_ack 
+tr pb_mutex Cl1_work Cl2_work  -> Cl1_work Cl2_work 
+pl Cl1_idle (1)
+pl Cl2_idle (1)
+pl G1_Free (1)
+pl G2_Free (1)
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+64 marking(s), 136 transition(s)
+
+MARKINGS:
+
+0 : Cl1_idle Cl2_idle G1_Free G2_Free
+1 : Cl1_G1_req Cl1_wait1 Cl2_idle G1_Free G2_Free
+2 : Cl1_idle Cl2_G2_req Cl2_wait2 G1_Free G2_Free
+3 : Cl1_G1_req Cl1_wait1 Cl2_G2_req Cl2_wait2 G1_Free G2_Free
+4 : Cl1_wait1 Cl2_idle G1_Busy G1_Cl1_ack G2_Free
+5 : Cl1_idle Cl2_wait2 G1_Free G2_Busy G2_Cl2_ack
+6 : Cl1_wait1 Cl2_G2_req Cl2_wait2 G1_Busy G1_Cl1_ack G2_Free
+7 : Cl1_G1_req Cl1_wait1 Cl2_wait2 G1_Free G2_Busy G2_Cl2_ack
+8 : Cl1_G2_req Cl1_wait2 Cl2_idle G1_Busy G2_Free
+9 : Cl1_idle Cl2_G1_req Cl2_wait1 G1_Free G2_Busy
+10 : Cl1_G2_req Cl1_wait2 Cl2_G2_req Cl2_wait2 G1_Busy G2_Free
+11 : Cl1_wait1 Cl2_wait2 G1_Busy G1_Cl1_ack G2_Busy G2_Cl2_ack
+12 : Cl1_G1_req Cl1_wait1 Cl2_G1_req Cl2_wait1 G1_Free G2_Busy
+13 : Cl1_wait2 Cl2_idle G1_Busy G2_Busy G2_Cl1_ack
+14 : Cl1_idle Cl2_wait1 G1_Busy G1_Cl2_ack G2_Busy
+15 : Cl1_wait2 Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy G2_Cl1_ack
+16 : Cl1_G2_req Cl1_wait2 Cl2_wait2 G1_Busy G2_Busy G2_Cl2_ack
+17 : Cl1_wait1 Cl2_G1_req Cl2_wait1 G1_Busy G1_Cl1_ack G2_Busy
+18 : Cl1_G1_req Cl1_wait1 Cl2_wait1 G1_Busy G1_Cl2_ack G2_Busy
+19 : Cl1_work Cl2_idle G1_Busy G2_Busy
+20 : Cl1_idle Cl2_work G1_Busy G2_Busy
+21 : Cl1_work Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy
+22 : Cl1_G2_req Cl1_wait2 Cl2_G1_req Cl2_wait1 G1_Busy G2_Busy
+23 : Cl1_G1_req Cl1_wait1 Cl2_work G1_Busy G2_Busy
+24 : Cl1_G1_release Cl1_G2_release Cl1_idle Cl2_idle G1_Busy G2_Busy
+25 : Cl1_idle Cl2_G1_release Cl2_G2_release Cl2_idle G1_Busy G2_Busy
+26 : Cl1_G1_release Cl1_G2_release Cl1_idle Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy
+27 : Cl1_G1_req Cl1_wait1 Cl2_G1_release Cl2_G2_release Cl2_idle G1_Busy G2_Busy
+28 : Cl1_G1_release Cl1_G1_req Cl1_G2_release Cl1_wait1 Cl2_idle G1_Busy G2_Busy
+29 : Cl1_G2_release Cl1_idle Cl2_idle G1_Free G2_Busy
+30 : Cl1_G1_release Cl1_idle Cl2_idle G1_Busy G2_Free
+31 : Cl1_idle Cl2_G1_release Cl2_G2_release Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy
+32 : Cl1_idle Cl2_G2_release Cl2_idle G1_Free G2_Busy
+33 : Cl1_idle Cl2_G1_release Cl2_idle G1_Busy G2_Free
+34 : Cl1_G1_release Cl1_G1_req Cl1_G2_release Cl1_wait1 Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy
+35 : Cl1_G2_release Cl1_idle Cl2_G2_req Cl2_wait2 G1_Free G2_Busy
+36 : Cl1_G1_release Cl1_idle Cl2_G2_req Cl2_wait2 G1_Busy G2_Free
+37 : Cl1_G1_req Cl1_wait1 Cl2_G1_release Cl2_G2_release Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy
+38 : Cl1_G1_req Cl1_wait1 Cl2_G2_release Cl2_idle G1_Free G2_Busy
+39 : Cl1_G1_req Cl1_wait1 Cl2_G1_release Cl2_idle G1_Busy G2_Free
+40 : Cl1_G1_req Cl1_G2_release Cl1_wait1 Cl2_idle G1_Free G2_Busy
+41 : Cl1_G1_release Cl1_G1_req Cl1_wait1 Cl2_idle G1_Busy G2_Free
+42 : Cl1_idle Cl2_G2_release Cl2_G2_req Cl2_wait2 G1_Free G2_Busy
+43 : Cl1_idle Cl2_G1_release Cl2_G2_req Cl2_wait2 G1_Busy G2_Free
+44 : Cl1_G1_req Cl1_G2_release Cl1_wait1 Cl2_G2_req Cl2_wait2 G1_Free G2_Busy
+45 : Cl1_G1_release Cl1_G1_req Cl1_wait1 Cl2_G2_req Cl2_wait2 G1_Busy G2_Free
+46 : Cl1_G1_release Cl1_idle Cl2_wait2 G1_Busy G2_Busy G2_Cl2_ack
+47 : Cl1_G1_req Cl1_wait1 Cl2_G2_release Cl2_G2_req Cl2_wait2 G1_Free G2_Busy
+48 : Cl1_G1_req Cl1_wait1 Cl2_G1_release Cl2_G2_req Cl2_wait2 G1_Busy G2_Free
+49 : Cl1_wait1 Cl2_G2_release Cl2_idle G1_Busy G1_Cl1_ack G2_Busy
+50 : Cl1_G2_release Cl1_wait1 Cl2_idle G1_Busy G1_Cl1_ack G2_Busy
+51 : Cl1_idle Cl2_G1_release Cl2_wait2 G1_Busy G2_Busy G2_Cl2_ack
+52 : Cl1_G2_release Cl1_wait1 Cl2_G2_req Cl2_wait2 G1_Busy G1_Cl1_ack G2_Busy
+53 : Cl1_G1_release Cl1_G1_req Cl1_wait1 Cl2_wait2 G1_Busy G2_Busy G2_Cl2_ack
+54 : Cl1_G1_release Cl1_idle Cl2_G1_req Cl2_wait1 G1_Busy G2_Busy
+55 : Cl1_wait1 Cl2_G2_release Cl2_G2_req Cl2_wait2 G1_Busy G1_Cl1_ack G2_Busy
+56 : Cl1_G1_req Cl1_wait1 Cl2_G1_release Cl2_wait2 G1_Busy G2_Busy G2_Cl2_ack
+57 : Cl1_G2_req Cl1_wait2 Cl2_G2_release Cl2_idle G1_Busy G2_Busy
+58 : Cl1_G2_release Cl1_G2_req Cl1_wait2 Cl2_idle G1_Busy G2_Busy
+59 : Cl1_idle Cl2_G1_release Cl2_G1_req Cl2_wait1 G1_Busy G2_Busy
+60 : Cl1_G2_release Cl1_G2_req Cl1_wait2 Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy
+61 : Cl1_G1_release Cl1_G1_req Cl1_wait1 Cl2_G1_req Cl2_wait1 G1_Busy G2_Busy
+62 : Cl1_G2_req Cl1_wait2 Cl2_G2_release Cl2_G2_req Cl2_wait2 G1_Busy G2_Busy
+63 : Cl1_G1_req Cl1_wait1 Cl2_G1_release Cl2_G1_req Cl2_wait1 G1_Busy G2_Busy
+
+REACHABILITY GRAPH:
+
+0 -> Cl1_req1/1, Cl2_req2/2
+1 -> Cl2_req2/3, G1_Cl1_req/4
+2 -> Cl1_req1/3, G2_Cl2_req/5
+3 -> G1_Cl1_req/6, G2_Cl2_req/7
+4 -> Cl1_req2/8, Cl2_req2/6
+5 -> Cl1_req1/7, Cl2_req1/9
+6 -> Cl1_req2/10, G2_Cl2_req/11
+7 -> Cl2_req1/12, G1_Cl1_req/11
+8 -> Cl2_req2/10, G2_Cl1_req/13
+9 -> Cl1_req1/12, G1_Cl2_req/14
+10 -> G2_Cl1_req/15, G2_Cl2_req/16
+11 -> Cl1_req2/16, Cl2_req1/17
+12 -> G1_Cl1_req/17, G1_Cl2_req/18
+13 -> Cl1_enter/19, Cl2_req2/15
+14 -> Cl1_req1/18, Cl2_enter/20
+15 -> Cl1_enter/21
+16 -> Cl2_req1/22
+17 -> Cl1_req2/22
+18 -> Cl2_enter/23
+19 -> Cl1_exit/24, Cl2_req2/21
+20 -> Cl1_req1/23, Cl2_exit/25
+21 -> Cl1_exit/26
+22 -> 
+23 -> Cl2_exit/27
+24 -> Cl1_req1/28, Cl2_req2/26, G1_Cl1_release/29, G2_Cl1_release/30
+25 -> Cl1_req1/27, Cl2_req2/31, G1_Cl2_release/32, G2_Cl2_release/33
+26 -> Cl1_req1/34, G1_Cl1_release/35, G2_Cl1_release/36
+27 -> Cl2_req2/37, G1_Cl2_release/38, G2_Cl2_release/39
+28 -> Cl2_req2/34, G1_Cl1_release/40, G2_Cl1_release/41
+29 -> Cl1_req1/40, Cl2_req2/35, G2_Cl1_release/0
+30 -> Cl1_req1/41, Cl2_req2/36, G1_Cl1_release/0
+31 -> Cl1_req1/37, G1_Cl2_release/42, G2_Cl2_release/43
+32 -> Cl1_req1/38, Cl2_req2/42, G2_Cl2_release/0
+33 -> Cl1_req1/39, Cl2_req2/43, G1_Cl2_release/0
+34 -> G1_Cl1_release/44, G2_Cl1_release/45
+35 -> Cl1_req1/44, G2_Cl1_release/2
+36 -> Cl1_req1/45, G1_Cl1_release/2, G2_Cl2_req/46
+37 -> G1_Cl2_release/47, G2_Cl2_release/48
+38 -> Cl2_req2/47, G1_Cl1_req/49, G2_Cl2_release/1
+39 -> Cl2_req2/48, G1_Cl2_release/1
+40 -> Cl2_req2/44, G1_Cl1_req/50, G2_Cl1_release/1
+41 -> Cl2_req2/45, G1_Cl1_release/1
+42 -> Cl1_req1/47, G2_Cl2_release/2
+43 -> Cl1_req1/48, G1_Cl2_release/2, G2_Cl2_req/51
+44 -> G1_Cl1_req/52, G2_Cl1_release/3
+45 -> G1_Cl1_release/3, G2_Cl2_req/53
+46 -> Cl1_req1/53, Cl2_req1/54, G1_Cl1_release/5
+47 -> G1_Cl1_req/55, G2_Cl2_release/3
+48 -> G1_Cl2_release/3, G2_Cl2_req/56
+49 -> Cl1_req2/57, Cl2_req2/55, G2_Cl2_release/4
+50 -> Cl1_req2/58, Cl2_req2/52, G2_Cl1_release/4
+51 -> Cl1_req1/56, Cl2_req1/59, G1_Cl2_release/5
+52 -> Cl1_req2/60, G2_Cl1_release/6
+53 -> Cl2_req1/61, G1_Cl1_release/7
+54 -> Cl1_req1/61, G1_Cl1_release/9
+55 -> Cl1_req2/62, G2_Cl2_release/6
+56 -> Cl2_req1/63, G1_Cl2_release/7
+57 -> Cl2_req2/62, G2_Cl2_release/8
+58 -> Cl2_req2/60, G2_Cl1_release/8
+59 -> Cl1_req1/63, G1_Cl2_release/9
+60 -> G2_Cl1_release/10
+61 -> G1_Cl1_release/12
+62 -> G2_Cl2_release/10
+63 -> G1_Cl2_release/12
+
+0.001s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+1 dead marking(s), 1 live marking(s)
+1 dead transition(s), 0 live transition(s)
+
+dead marking(s): 22
+
+dead transition(s): pb_mutex
+
+STRONG CONNECTED COMPONENTS:
+
+0 : 22
+1 : 17
+2 : 16
+3 : 11
+4 : 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32 31 30 29 28 27 26 25 24 23 21 20 19 18 15 14 13 12 10 9 8 7 6 5 4 3 2 1 0
+
+SCC GRAPH:
+
+0 ->
+1 -> Cl1_req2/0
+2 -> Cl2_req1/0
+3 -> Cl1_req2/2, Cl2_req1/1
+4 -> G1_Cl2_release/4, G2_Cl2_release/4, G1_Cl1_release/4, G2_Cl1_release/4, Cl1_req1/4, Cl2_req2/4, Cl2_req1/4, Cl1_req2/4, G2_Cl2_req/4, G1_Cl1_req/4, Cl2_exit/4, Cl1_exit/4, Cl2_enter/4, Cl1_enter/4, G1_Cl1_req/1, G1_Cl2_req/4, G2_Cl1_req/4, G2_Cl2_req/2, G1_Cl1_req/3, G2_Cl2_req/3
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+
+
